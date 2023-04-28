@@ -21,12 +21,12 @@ func main() {
 		return
 	}
 
-	kbot.Handle("/hello", func(c message tele.Context) error {
-		return c.Send("Hello!")
+	kbot.Handle("/hello", func(context tele.Context) error {
+		return context.Send("Hello!")
 	})
 
-	kbot.Handle("/version", func(c tele.Context) error {
-		return c.Send("Version: 1.0.0-alpha")
+	kbot.Handle("/version", func(context tele.Context) error {
+		return context.Send("Version: 1.0.0-alpha")
 	})
 
 	kbot.Start()
