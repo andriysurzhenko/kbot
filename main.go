@@ -24,5 +24,9 @@ func main() {
 		return c.Send("Hello!")
 	})
 
+	b.Handle("/tbchub", func(c tele.Context) error {
+		return c.Send("Ти бачив хуй у бєлкі?")
+	})
+
 	b.Start()
 }
