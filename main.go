@@ -25,8 +25,8 @@ func main() {
 		return c.Send("Hello!")
 	})
 
-	kbot.Handle("/tbchub", func(c tele.Context) error {
-		return c.Send("Ти бачив хуй у бєлкі?")
+	kbot.Handle("/version", func(c tele.Context) error {
+		return c.Send("Version: 1.0.0-alpha")
 	})
 
 	kbot.Start()
