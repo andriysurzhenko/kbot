@@ -15,19 +15,19 @@ func main() {
 		Poller: &tele.LongPoller{Timeout: 10 * time.Second},
 	}
 
-	b, err := tele.NewBot(pref)
+	kbot, err := tele.NewBot(pref)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
 
-	b.Handle("/hello", func(c tele.Context) error {
+	kbot.Handle("/hello", func(c message tele.Context) error {
 		return c.Send("Hello!")
 	})
 
-	b.Handle("/tbchub", func(c tele.Context) error {
+	kbot.Handle("/tbchub", func(c tele.Context) error {
 		return c.Send("Ти бачив хуй у бєлкі?")
 	})
 
-	b.Start()
+	kbot.Start()
 }
