@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -15,18 +16,24 @@ func main() {
 		Poller: &tele.LongPoller{Timeout: 5 * time.Second},
 	}
 
+	fmt.Printf("Telegram bot 'kbot' started!\n")
 	kbot, err := tele.NewBot(pref)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
 
-	kbot.Handle("/hello", func(context tele.Context) error {
-		return context.Send("Hello!")
-	})
+	kbot.Handle(tele.OnText, func(context tele.Context) error {
+		var reply error
+		msg := context.Text()
+		log.Println("Someone enetered: " + msg)
+		if msg == "/hello" {
+			reply = context.Send("Hello")
 
-	kbot.Handle("/version", func(context tele.Context) error {
-		return context.Send("Version: 1.0.0-alpha")
+		} else {
+			reply = context.Send("Do not know waht to answer. Please try again")
+		}
+		return reply
 	})
 
 	kbot.Start()
