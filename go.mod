@@ -1,4 +1,4 @@
-module Module_2/kbot
+module kbot
 
 go 1.19
 

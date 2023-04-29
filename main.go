@@ -3,39 +3,87 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"time"
 
+	cobra "github.com/spf13/cobra"
 	tele "gopkg.in/telebot.v3"
-	// cobra "github.com/spf13/cobra"
 )
 
-func main() {
-	pref := tele.Settings{
-		Token:  os.Getenv("TOKEN"),
-		Poller: &tele.LongPoller{Timeout: 5 * time.Second},
-	}
+var kbotVersion string = "0.0.1-alpha"
+var rootCmd = &cobra.Command{}
 
-	kbot, err := tele.NewBot(pref)
-	if err != nil {
-		log.Fatal("Unknown error. Most probbaly something wrong with TOKEN.")
-		return
-	}
+var startkbotCmd = &cobra.Command{
+	Use:   "start",
+	Short: "This is start command",
+	Long:  "Use 'start' to start kbot",
+	Run: func(cmd *cobra.Command, args []string) {
 
-	fmt.Printf("Telegram bot 'kbot' started!\n")
-
-	kbot.Handle(tele.OnText, func(context tele.Context) error {
-		var reply error
-		msg := context.Text()
-		log.Println("Someone enetered: " + msg)
-		if msg == "/hello" {
-			reply = context.Send("Hello")
-
-		} else {
-			reply = context.Send("Do not know waht to answer. Please try again")
+		pref := tele.Settings{
+			URL:         "",
+			Token:       os.Getenv("TOKEN"),
+			Updates:     0,
+			Poller:      &tele.LongPoller{Timeout: 5 * time.Second},
+			Synchronous: false,
+			Verbose:     false,
+			ParseMode:   "",
+			OnError: func(error, tele.Context) {
+			},
+			Client:  &http.Client{},
+			Offline: false,
 		}
-		return reply
-	})
 
-	kbot.Start()
+		kbot, err := tele.NewBot(pref)
+		if err != nil {
+			log.Fatal("Unknown error. Most probbaly something wrong with TOKEN.")
+			return
+		}
+
+		fmt.Printf("Telegram bot 'kbot' started!\n")
+
+		kbot.Handle(tele.OnText, func(context tele.Context) error {
+			var reply error
+			msg := context.Text()
+			log.Println("Someone enetered: " + msg)
+			if msg == "/hello" {
+				reply = context.Send("Hello")
+
+			} else {
+				reply = context.Send("Do not know waht to answer. Please try again")
+			}
+			return reply
+		})
+
+		kbot.Start()
+	},
+}
+
+var helpkbootCmd = &cobra.Command{
+	Use:   "help",
+	Short: "This is help command",
+	Long:  "Use 'help' to print the available help of the kbot",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Printf("Nowhere to find any help. Sorry...\n")
+	},
+}
+
+var versionkbotCmd = &cobra.Command{
+	Use:   "version",
+	Short: "This is version command",
+	Long:  "Use 'version' to print the version of the kbot",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Printf("The current version is %s\n", kbotVersion)
+	},
+}
+
+func main() {
+
+	rootCmd.Execute()
+}
+
+func init() {
+	rootCmd.AddCommand(startkbotCmd)
+	rootCmd.AddCommand(helpkbootCmd)
+	rootCmd.AddCommand(versionkbotCmd)
 }
