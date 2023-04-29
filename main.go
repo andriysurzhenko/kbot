@@ -16,12 +16,13 @@ func main() {
 		Poller: &tele.LongPoller{Timeout: 5 * time.Second},
 	}
 
-	fmt.Printf("Telegram bot 'kbot' started!\n")
 	kbot, err := tele.NewBot(pref)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Unknown error. Most probbaly something wrong with TOKEN.")
 		return
 	}
+
+	fmt.Printf("Telegram bot 'kbot' started!\n")
 
 	kbot.Handle(tele.OnText, func(context tele.Context) error {
 		var reply error
