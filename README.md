@@ -23,7 +23,7 @@ Eaxmple run:
 4. Obtai token via interraction with https://t.me/botfather
 5. Build and run application:
 
-========================================================================
+
 C:\Temp\kbot>go build
 C:\Temp\kbot>kbot.exe
 kbot is a very simple telebot
@@ -42,18 +42,18 @@ Flags:
   -v, --version   version for kbot
 
 Use "kbot [command] --help" for more information about a command.
-========================================================================
+
 
 6. Execute the application with "start" command to start interactions with Telegram bot:
 
-========================================================================
+
 C:\Temp\kbot>kbot.exe start
 Telegram bot 'kbot' started!
 2023/04/30 09:56:23 Someone enetered: /help
 2023/04/30 09:56:26 Someone enetered: /hello
 2023/04/30 09:56:27 Someone enetered: /version
 2023/04/30 09:56:38 Someone enetered: /ji
-========================================================================
+
 
 Compatibility:
 The application was developed using Go on the Linux (Fedora38).
