@@ -12,7 +12,11 @@ import (
 )
 
 var kbotVersion string = "0.0.1-alpha"
-var rootCmd = &cobra.Command{}
+var rootCmd = &cobra.Command{
+	Use:     "kbot",
+	Version: kbotVersion,
+	Short:   "kbot is a very simple telebot",
+}
 
 var startkbotCmd = &cobra.Command{
 	Use:   "start",
@@ -22,7 +26,7 @@ var startkbotCmd = &cobra.Command{
 
 		pref := tele.Settings{
 			URL:         "",
-			Token:       os.Getenv("TOKEN"),
+			Token:       os.Getenv("TELE_TOKEN"),
 			Updates:     0,
 			Poller:      &tele.LongPoller{Timeout: 5 * time.Second},
 			Synchronous: false,
@@ -42,20 +46,20 @@ var startkbotCmd = &cobra.Command{
 
 		fmt.Printf("Telegram bot 'kbot' started!\n")
 
-		kbot.Handle(tele.OnText, func(context tele.Context) error {
+		kbot.Handle(tele.OnText, func(m tele.Context) error {
 			var reply error
-			// context.Send("I am alive!")
-			msg := context.Text()
+			// m.Send("I am alive!")
+			msg := m.Text()
 			log.Println("Someone enetered: " + msg)
 			switch msg {
 			case "/hello":
-				reply = context.Send("Hello")
+				reply = m.Send("Hello")
 			case "/help":
-				reply = context.Send("This is simple bot on Go.\nOnly /hello and /version are available for now")
+				reply = m.Send("This is simple bot on Go.\nOnly /hello and /version are available for now")
 			case "/version":
-				reply = context.Send("Version:" + kbotVersion)
+				reply = m.Send("Version:" + kbotVersion)
 			default:
-				reply = context.Send("Do not know waht to answer. Please try /help for help")
+				reply = m.Send("Do not know waht to answer. Please try /help for help")
 			}
 
 			return reply
