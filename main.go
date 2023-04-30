@@ -11,7 +11,7 @@ import (
 	tele "gopkg.in/telebot.v3"
 )
 
-var kbotVersion string = "0.0.1-alpha"
+var kbotVersion string = "1.0.0"
 var rootCmd = &cobra.Command{
 	Use:     "kbot",
 	Version: kbotVersion,
@@ -40,7 +40,8 @@ var startkbotCmd = &cobra.Command{
 
 		kbot, err := tele.NewBot(pref)
 		if err != nil {
-			log.Fatal("Unknown error\n The most common issue is that there is something wrong with TOKEN value")
+			log.Fatal("Unknown error!")
+			log.Fatal("The most common issue is that there is something wrong with TELE_TOKEN value")
 			return
 		}
 
