@@ -8,7 +8,7 @@ The application was created using GO.
 The application has only educational purposes.
 Only several simple commands are supported.
 
-How to deploy it:
+How to use it:
 1. Create a Telegram via 'https://t.me/botfather'
 2. Collect a token for your bot
 3. Clone the repository
@@ -16,3 +16,9 @@ How to deploy it:
 5. Build an application
 6. Execute
 
+Eaxmple run:
+1. Install Go if it is not already isntalled
+2. Clone the repository
+3. Craete a bot - https://t.me/fjzbnklbvjkasdfbhaobo_bot
+4. Obtai token via interraction with https://t.me/botfather
+5. Run or build application:
