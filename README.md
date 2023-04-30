@@ -12,7 +12,7 @@ How to use it:
 1. Create a Telegram via 'https://t.me/botfather'
 2. Collect a token for your bot
 3. Clone the repository
-4. Set enviromental varibale 'TELE_TOKEN' for your bot
+4. Set enviromental varibale TELE_TOKEN for your bot
 5. Build an application
 6. Execute
 
