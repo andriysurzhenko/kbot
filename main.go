@@ -94,6 +94,6 @@ func main() {
 
 func init() {
 	rootCmd.AddCommand(startkbotCmd)
-	rootCmd.AddCommand(helpkbootCmd)
+	rootCmd.SetHelpCommand(helpkbootCmd)
 	rootCmd.AddCommand(versionkbotCmd)
 }
