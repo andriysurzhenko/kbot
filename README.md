@@ -54,3 +54,8 @@ Telegram bot 'kbot' started!
 2023/04/30 09:56:27 Someone enetered: /version
 2023/04/30 09:56:38 Someone enetered: /ji
 ========================================================================
+
+Compatibility:
+The application was developed using Go on the Linux (Fedora38).
+The application was successfully built and executed on Linux;
+The code was downloaded, the aplication built and executed on the Windows 11
