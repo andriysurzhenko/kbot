@@ -36,7 +36,7 @@ var startkbotCmd = &cobra.Command{
 
 		kbot, err := tele.NewBot(pref)
 		if err != nil {
-			log.Fatal("Unknown error. Most probbaly something wrong with TOKEN.")
+			log.Fatal("Unknown error\n The most common issue is that there is something wrong with TOKEN value")
 			return
 		}
 
@@ -44,14 +44,20 @@ var startkbotCmd = &cobra.Command{
 
 		kbot.Handle(tele.OnText, func(context tele.Context) error {
 			var reply error
+			// context.Send("I am alive!")
 			msg := context.Text()
 			log.Println("Someone enetered: " + msg)
-			if msg == "/hello" {
+			switch msg {
+			case "/hello":
 				reply = context.Send("Hello")
-
-			} else {
-				reply = context.Send("Do not know waht to answer. Please try again")
+			case "/help":
+				reply = context.Send("This is simple bot on Go.\nOnly /hello and /version are available for now")
+			case "/version":
+				reply = context.Send("Version:" + kbotVersion)
+			default:
+				reply = context.Send("Do not know waht to answer. Please try /help for help")
 			}
+
 			return reply
 		})
 
