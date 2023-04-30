@@ -1,4 +1,4 @@
-Hi 👋, I'm Andrii
+Hi 👋, I'm Andrii.
 A support engineer.
 I'm currently working on acquiring skills to become a DevOps engineer.
 This is my first attempt in creating a Telegram bot.
