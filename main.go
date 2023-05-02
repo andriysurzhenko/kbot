@@ -11,7 +11,7 @@ import (
 	telebot "gopkg.in/telebot.v3"
 )
 
-var kbotVersion string = "1.0.1"
+var kbotVersion string = "1.0.2"
 var rootCmd = &cobra.Command{
 	Use:     "kbot",
 	Version: kbotVersion,
@@ -40,7 +40,7 @@ var startkbotCmd = &cobra.Command{
 
 		kbot, err := telebot.NewBot(pref)
 		if err != nil {
-			log.Fatal("Unknown error!" Please check system variable TELE_TOKEN value")
+			log.Fatal("Unknown error! Please check system variable TELE_TOKEN value")
 			return
 		}
 
