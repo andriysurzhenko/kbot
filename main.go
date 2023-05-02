@@ -8,7 +8,7 @@ import (
 	"time"
 
 	cobra "github.com/spf13/cobra"
-	tele "gopkg.in/telebot.v3"
+	telebot "gopkg.in/telebot.v3"
 )
 
 var kbotVersion string = "1.0.0"
@@ -24,21 +24,21 @@ var startkbotCmd = &cobra.Command{
 	Long:  "Use 'start' to start kbot",
 	Run: func(cmd *cobra.Command, args []string) {
 
-		pref := tele.Settings{
+		pref := telebot.Settings{
 			URL:         "",
 			Token:       os.Getenv("TELE_TOKEN"),
 			Updates:     0,
-			Poller:      &tele.LongPoller{Timeout: 5 * time.Second},
+			Poller:      &telebot.LongPoller{Timeout: 5 * time.Second},
 			Synchronous: false,
 			Verbose:     false,
 			ParseMode:   "",
-			OnError: func(error, tele.Context) {
+			OnError: func(error, telebot.Context) {
 			},
 			Client:  &http.Client{},
 			Offline: false,
 		}
 
-		kbot, err := tele.NewBot(pref)
+		kbot, err := telebot.NewBot(pref)
 		if err != nil {
 			log.Fatal("Unknown error!")
 			log.Fatal("The most common issue is that there is something wrong with TELE_TOKEN value")
@@ -47,7 +47,7 @@ var startkbotCmd = &cobra.Command{
 
 		fmt.Printf("Telegram bot 'kbot' started!\n")
 
-		kbot.Handle(tele.OnText, func(m tele.Context) error {
+		kbot.Handle(telebot.OnText, func(m telebot.Context) error {
 			var reply error
 			// m.Send("I am alive!")
 			msg := m.Text()
