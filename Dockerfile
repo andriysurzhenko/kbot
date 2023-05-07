@@ -12,9 +12,9 @@ RUN go mod download
 # Copy source code
 COPY *.go ./
 
-# Build eapplication
-RUN CGO_ENABLED=0 GOOS=linux go build -o /kbot
+# Build application with statically linked dependencies
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/kbot
 
 # Execute application
-CMD ["/kbot"]
+ENTRYPOINT ["/app/kbot"]
 
