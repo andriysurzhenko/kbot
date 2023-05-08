@@ -1,7 +1,7 @@
 #Set variables
 OS = linux
 ARCH = amd64
-REGISTRY = asurzhenko/kbot-container
+REGISTRY = gcr.io/devops2023-386111
 VERSION = latest
 
 format:
@@ -42,7 +42,7 @@ marm: format download
 
 image: build
 	$(info "Build container with the binary for the corresponding platform")
-	docker build -t $(REGISTRY)/kbot:$(OS)-$(ARCH)-$(VERSION) --build-arg TOKEN=$(TELE_TOKEN) .
+	docker build -t $(REGISTRY)/kbot-$(OS)-$(ARCH):$(VERSION) --build-arg TOKEN=$(TELE_TOKEN) .
 test:
 	go test -v
 
@@ -50,4 +50,4 @@ clean:
 	$(info "Delete previsouly build binary kbot")
 	rm -f ./kbot
 	$(info "Removing already built docker images...")
-	docker rmi -f $$(docker images $(REGISTRY)/kbot:$(OS)-$(ARCH)-$(VERSION) -q)
+	docker rmi -f $$(docker images $(REGISTRY)/kbot-$(OS)-$(ARCH):$(VERSION) -q)
