@@ -59,3 +59,60 @@ Compatibility:
 The application was developed using Go on the Linux (Fedora38).
 The application was successfully built and executed on Linux;
 The code was downloaded, the aplication built and executed on the Windows 11
+
+=======================================================================================================
+
+The kbot application can be wrapped into docker container.
+The kbot binary can be built for various platforms.
+Please use proper keys and targets specified in the Makefile.
+The supported platforms: linux, windows, darwin (MacOS)
+The supported architectures: amd64 and arm
+
+The binary file can be built independently for various combinations of the platform/architecture targets.
+Makefile includes several targets to cover these combinations.
+For example:
+
+Windows/x86_amd64:
+
+windows
+
+Windows/x86_arm:
+
+make winarm
+
+Please read Makefile for understanding available sets of the platform/architecture .
+
+Thus, for building a container with the binary for various platforms/architecture usage of variables should be employed.
+The variable "OS" is responsible for setting the platform value.
+By default, it is 'linux'.
+
+The examples, of building a docker container with binary for various platforms:
+
+Linux:
+
+make image OS=darwin
+
+Windows:
+
+make image OS=windows
+
+MacOS:
+
+make image OS=darwin
+
+The variable "ARCH"  is responsible for setting the architecture value.
+By default, it is 'amd64'.
+
+The examples, of building a docker container with binary for various platforms for 'arm' architecture:
+
+Linux ARM:
+
+make image OS=darwin ARCH=arm
+
+Windows ARM:
+
+make image OS=windows ARCH=arm
+
+MacOS ARM:
+
+make image OS=darwin ARCH=arm
