@@ -50,7 +50,7 @@ var startkbotCmd = &cobra.Command{
 			var reply error
 			// m.Send("I am alive!")
 			msg := m.Text()
-			log.Println("Someone enetered: " + msg)
+			log.Println("Someone entered: " + msg)
 			switch msg {
 			case "/hello":
 				reply = m.Send("Hello")
@@ -59,7 +59,7 @@ var startkbotCmd = &cobra.Command{
 			case "/version":
 				reply = m.Send("Version:" + kbotVersion)
 			default:
-				reply = m.Send("Do not know waht to answer. Please try /help for help")
+				reply = m.Send("Do not know what to answer. Please try /help for help")
 			}
 
 			return reply

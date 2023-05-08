@@ -12,15 +12,15 @@ How to use it:
 1. Create a Telegram via 'https://t.me/botfather'
 2. Collect a token for your bot
 3. Clone the repository
-4. Set enviromental varibale TELE_TOKEN for your bot
+4. Set environmental variable TELE_TOKEN for your bot
 5. Build an application
 6. Execute
 
-Eaxmple run:
-1. Install Go if it is not already isntalled
+Example run:
+1. Install Go if it is not already installed
 2. Clone the repository
-3. Craete a bot - https://t.me/fjzbnklbvjkasdfbhaobo_bot
-4. Obtai token via interraction with https://t.me/botfather
+3. Create a bot - https://t.me/fjzbnklbvjkasdfbhaobo_bot
+4. Obtain token via interaction with https://t.me/botfather
 5. Build and run application:
 
 
@@ -58,4 +58,4 @@ Telegram bot 'kbot' started!
 Compatibility:
 The application was developed using Go on the Linux (Fedora38).
 The application was successfully built and executed on Linux;
-The code was downloaded, the aplication built and executed on the Windows 11
+The code was downloaded, the application built and executed on the Windows 11
