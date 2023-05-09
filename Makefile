@@ -50,4 +50,4 @@ clean:
 	$(info "Delete previsouly build binary kbot")
 	rm -f ./kbot
 	$(info "Removing already built docker images...")
-	docker rmi -f $$(docker images $(REGISTRY)/kbot-$(OS)-$(ARCH):$(VERSION) -q)
+	docker  2>/dev/null rmi -f $$(docker images $(REGISTRY)/kbot-$(OS)-$(ARCH):$(VERSION) -q) || true
