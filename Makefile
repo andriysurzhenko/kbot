@@ -5,6 +5,7 @@ REGISTRY = gcr.io/devops2023-386111
 VERSION = latest
 
 format:
+	$(info  "Format your code..")
 	go fmt
 
 download: 
