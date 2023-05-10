@@ -6,7 +6,7 @@ VERSION = latest
 
 format:
 	$(info  "Format your code..")
-	gofmt
+	gofmt .
 
 download: 
 	echo "Download required modules..."
